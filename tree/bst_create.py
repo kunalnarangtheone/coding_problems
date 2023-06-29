@@ -8,7 +8,7 @@ def create_bst():
     node4 = TreeNode(3)
     node5 = TreeNode(6)
     node6 = TreeNode(10)
-    node7 = TreeNode(7)
+    # node7 = TreeNode(7)
 
     root.left = node1
     root.right = node2
@@ -19,6 +19,6 @@ def create_bst():
     node2.left = node5
     node2.right = node6
 
-    node5.right = node7
+    # node5.right = node7
 
     return root

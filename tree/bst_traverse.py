@@ -8,7 +8,9 @@ def traverse_bst(root):
         print(root.val)
 
         if root.left:
-            bst_traverse(root.left)
+            traverse_bst(root.left)
 
         if root.right:
-            bst_traverse(root.right)
+            traverse_bst(root.right)
+
+traverse_bst(create_bst())

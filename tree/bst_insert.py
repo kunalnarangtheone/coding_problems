@@ -7,24 +7,14 @@ from tree_node import TreeNode
 def insert_bst(root, value):
     if not root:
         return TreeNode(value)
+    
+    if value < root.val:
+        root.left = insert_bst(root.left, value)
 
     else:
-        if value == root.val:
-            return
+        root.right = insert_bst(root.right, value)
 
-        elif value < root.val:
-            if root.left:
-                insert_bst(root.left, value)
-            else:
-                root.left = TreeNode(value)
-
-        else:
-            if root.right:
-                insert_bst(root.right, value)
-            else:
-                root.right = TreeNode(value)
-
-        return "The node has been successfully inserted"
+    return root
 
 root = create_bst()
 insert_bst(root, 7)

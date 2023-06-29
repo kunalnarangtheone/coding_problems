@@ -1,0 +1,9 @@
+Bisect left and bisect right work as follows:
+
+1. If element is present in the array:
+    1.1 Bisect left gives the index of the element (ie index)
+    1.2 Bisect right gives the index of the element that is one greater (ie index + 1)
+
+2. If element in not present in the array:
+    2.1 Bisect left gives the index of the next greater element
+    2.2 Bisect right gives the index of the next greater element
