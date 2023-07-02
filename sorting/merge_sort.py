@@ -4,9 +4,9 @@ def merge_sort(array):
     r = len(array) - 1
 
     if l < r:
-        mid = len(array) // 2
-        left = array[:mid]
-        right = array[mid:]
+        mid = (l + r) // 2
+        left = array[:mid + 1]
+        right = array[mid + 1:]
         merge_sort(left)
         merge_sort(right)
 
@@ -34,7 +34,7 @@ def merge_sort(array):
             j+=1
             k+=1
 
-arr = [1, 5, 2, 7, 3, 8, 2]
+arr = [5, 1, 1, 2, 0, 0]
 merge_sort(arr)
 print(arr)
 
