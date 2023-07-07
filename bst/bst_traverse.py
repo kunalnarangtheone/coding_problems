@@ -1,4 +1,4 @@
-from bst_create import create_bst
+# from bst_create import create_bst
 
 def traverse_bst(root):
     if not root:
@@ -13,4 +13,4 @@ def traverse_bst(root):
         if root.right:
             traverse_bst(root.right)
 
-traverse_bst(create_bst())
+# traverse_bst(create_bst())
