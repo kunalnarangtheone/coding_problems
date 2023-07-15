@@ -1,38 +1,35 @@
-def substrings_with_one_repeating(s, k):
+from collections import defaultdict
+def substrings(s, k):
     n = len(s)
-    counter = [0] * 26
-    res = []
 
     if k > n:
         return []
+
+    freq_with_more_than_one_repeating = 0
+    lookup = defaultdict(int)
+    ans = set()
     
-    counter_with_repeating = 0
-
     for i in range(k):
-        counter[ord(s[i]) - ord("a")]+=1
-        if counter[ord(s[i]) - ord("a")] > 1:
-            counter_with_repeating+=1
+        lookup[s[i]]+=1
+        if lookup[s[i]] > 1:
+            freq_with_more_than_one_repeating+=1
 
-    if counter_with_repeating == 1:
-        res.append(s[:k])
+        if freq_with_more_than_one_repeating == 1:
+            ans.add(s[:k])
 
     for i in range(k, n):
-        if counter[ord(s[i - k]) - ord("a")] > 1:
-            counter_with_repeating-=1
+        if lookup[s[i - k]] > 1:
+            freq_with_more_than_one_repeating-=1
 
-        counter[ord(s[i - k]) - ord("a")]-=1
-        counter[ord(s[i]) - ord("a")]+=1
+        lookup[s[i - k]]-=1
+        lookup[s[i]]+=1
 
-        if counter[ord(s[i]) - ord("a")] > 1:
-            counter_with_repeating+=1
+        if lookup[s[i]] > 1:
+            freq_with_more_than_one_repeating+=1
 
-        if counter_with_repeating == 1:
-            res.append(s[i - k + 1:i + 1])
+        if freq_with_more_than_one_repeating == 1:
+            ans.add(s[i - k + 1: i + 1])
 
-    return res
+    return list(ans)
 
-print(substrings_with_one_repeating("awaglk", 4))
-
-
-    
-
+print(substrings("awaglk", 4))

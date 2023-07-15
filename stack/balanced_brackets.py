@@ -34,6 +34,6 @@ def balanced_brackets(s):
     return 1 if len(stack) == 0 else 0
 
 print(balanced_brackets("[](){}"))
-print(balanced_brackets("(h[e{l<l>o}!]~)()()())"))
+print(balanced_brackets("(h[e{l<l>o}!]~)()()()("))
 
         
