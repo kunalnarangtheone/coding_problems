@@ -1,18 +1,7 @@
-def next_greater(arr):
-    """
-    Finds the next greater element in the array
-    """
+import logging
 
-    stack = []
-    ng = [-1] * len(arr)
+logging.warning("Hello world!")
 
-    for i in range(len(arr)):
-        while stack and arr[stack[-1]] < arr[i]:
-            ng[stack.pop()] = i
-
-        stack.append(i)
-
-    return ng
-
-arr = [1, 3, 5, 4]
-print(next_greater(arr))
+x = [(1, 2), (3, 4)]
+for val in x:
+    logging.exception(val)

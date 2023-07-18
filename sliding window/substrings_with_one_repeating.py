@@ -1,35 +1,31 @@
-from collections import defaultdict
+
 def substrings(s, k):
     n = len(s)
-
     if k > n:
         return []
-
-    freq_with_more_than_one_repeating = 0
-    lookup = defaultdict(int)
-    ans = set()
     
-    for i in range(k):
-        lookup[s[i]]+=1
-        if lookup[s[i]] > 1:
-            freq_with_more_than_one_repeating+=1
+    ans = set()
+    l = r = 0
+    counter = dict()
 
-        if freq_with_more_than_one_repeating == 1:
-            ans.add(s[:k])
+    while r < n:
+        counter[s[r]] = counter.get(s[r], 0) + 1
+        uniq_count = len(counter)
 
-    for i in range(k, n):
-        if lookup[s[i - k]] > 1:
-            freq_with_more_than_one_repeating-=1
+        if r - l + 1 > k:
+            counter[s[l]]-=1
 
-        lookup[s[i - k]]-=1
-        lookup[s[i]]+=1
+            if counter[s[l]] == 0:
+                del counter[s[l]]
+                uniq_count-=1
+            l+=1
 
-        if lookup[s[i]] > 1:
-            freq_with_more_than_one_repeating+=1
+        if uniq_count == k - 1:
+            ans.add(s[l:r + 1])
 
-        if freq_with_more_than_one_repeating == 1:
-            ans.add(s[i - k + 1: i + 1])
+        r+=1
 
     return list(ans)
 
-print(substrings("awaglk", 4))
+# print(substrings("awaglk", 4))
+print(substrings("aaaabcab", 3))
